@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Only One Command Generator (1.20.1 Approved)</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <h1>OnlyOneCommand Generator (1.20.1 Approved)</h1>
+    <div class="Panel">
+        <label for="autoNextCheckbox">Auto Next:</label>
+        <input type="checkbox" id="autoNextCheckbox" onchange="updateAutoNext()"><br>
+        <button onclick="copyCommandWithAutoNext(document.getElementsByClassName('command-block')[0]);">
+            New Command</button>
+        <button onclick="generate();">Generate</button>
+    </div>
+    <div id="commands">
+        <!-- Initial command block -->
+        <div class="command-block Module">
+            <label class="ghostLabel">Command Module</label><br>
+            <textarea rows="6" cols="50" class="command-input" placeholder="say hi"></textarea><br>
+
+            <label for="repeatingCheckbox">Repeating:</label>
+            <input type="checkbox" class="repeating-checkbox"><br>
+
+            <button onclick="deleteCommand(this)" class="Round">X</button>
+        </div>
+    </div>
+    <textarea id="SavedCommands" rows="10" cols="50"></textarea>
+    <script src="app.js"></script>
+</body>
+
+</html>

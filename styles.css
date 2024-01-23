@@ -1,0 +1,107 @@
+body {
+    background-color: #333;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+}
+
+h1,
+h2,
+label {
+    color:rgb(255, 60, 0)
+}
+
+.command-block {
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #888;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    
+}
+.command-block button{
+    position: absolute;
+}
+.command-input {
+    background-color: #252525;
+    color: #fff;
+    border: 1px solid #313131;
+    border-radius: 16px;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+button {
+    background-color: rgb(170, 123, 85);
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    
+    top: 5px;
+    right: 5px;
+}
+
+.Panel {
+    z-index: 9999;
+    position: fixed;
+    right: 0%;
+    top:80%;
+    background-color: #161616;
+    border: 8px solid #252525;
+    border-radius: 16px;
+    padding: 10px;
+    width: 200px;
+    height: 200px;
+}
+
+button:hover {
+    background-color: rgb(255, 102, 0)
+}
+
+
+.Module {
+    border-radius: 12px;
+}
+
+
+.Round {
+    border-radius: 18px;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #161616;
+    margin: 0;
+    transition: background-color 200ms;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    background-color: #3a3737;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1em;
+    height: 1em;
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    transform: translateY(0.2em);
+  }
+
+input[type="checkbox"]:checked {
+    background-color: #ee1616;
+}
+
+#SavedCommands {
+    position: fixed;
+    top:83%;
+    left: 0;
+    background-color: #252525;
+    color: #fff;
+    border: 4px solid #5a5959;
+    resize: none;
+}
