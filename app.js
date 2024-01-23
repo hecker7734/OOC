@@ -107,7 +107,7 @@ function generate() {
     let commands = document.getElementsByClassName('command-input');
     let CMDs = '';
     for (let i = 0; i < commands.length; i++) {
-        CMDs += generateModule(commands[i].value,modules[i].querySelector('.repeating-checkbox').checked) + ",";
+        CMDs += generateModule(commands[i].value.trim(),modules[i].querySelector('.repeating-checkbox').checked) + ",";
     }
     CMDs = CMDs.slice(0, -1);
     let cmd = generateBase(CMDs);
