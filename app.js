@@ -100,7 +100,7 @@ function generateModule(cmd, type) {
 }
 
 function generateBase(CMDs) {
-    return `summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:activator_rail"},Time:1,Passengers:[${CMDs}]}`
+    return `summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:activator_rail"},Time:1,Passengers:[${CMDs},{id:"minecraft:command_block_minecart",Command:"kill @e[type=command_block_minecart,distance=0..2]"}]}`
 }
 
 function generate() {
@@ -123,6 +123,25 @@ function generate() {
     return cmd;
 }
 
+function loadText() {
+    let CMDS = document.getElementById('LOC').value.split("\n");
+    amount = CMDS.length - 1;
+
+    // Add or remove command blocks based on the loaded commands
+    let currentCommands = document.getElementsByClassName('command-block').length;
+    for (let i = currentCommands - 1; i > amount - 1; i--) {
+        deleteCommand(document.getElementsByClassName('Round')[i]);
+    }
+    //start
+    for (let i = 0; i < amount; i++) {
+        copyCommandWithAutoNext(document.getElementsByClassName('command-block')[0]);
+    }
+    // Load the commands into the textareas
+    let c = document.getElementsByClassName('command-input');
+    for (let i = 0; i < amount+1; i++) {
+        c[i].value = CMDS[i].trim();
+    }
+}
 
 
 //funny time
@@ -133,3 +152,5 @@ window.onload = function () {
         document.getElementById('SavedCommands').value = savedCommands;
     }
 }
+
+
