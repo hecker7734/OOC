@@ -90,34 +90,38 @@ function deleteCommand(deleteButton) {
 
 
 //commands to generate this mess
-function generateModule(cmd,type) {
-    if(type == true){
-        repeatingY ++;
-        return `{id:"minecraft:command_block_minecart",Command:"setblock ~ ~${repeatingY} ~ repeating_command_block{auto:1b,Command:"${cmd}"} replace"}`
+function generateModule(cmd, type) {
+    if (type) {
+        repeatingY++;
+        return `{id:"minecraft:command_block_minecart",Command:'setblock ~ ~${repeatingY} ~ repeating_command_block{auto:1b,Command:"${cmd}"} replace'}`;
     } else {
-        return `{id:"minecraft:command_block_minecart",Command:"${cmd}"}`
+        return `{id:"minecraft:command_block_minecart",Command:"${cmd}"}`;
     }
-    return `What, the error you've encountered is completly impossible to get, unless you changed the html. >:}`
 }
+
 function generateBase(CMDs) {
-    return `summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:redstone_block"},Time:1,Passengers:[{id:"minecraft:falling_block",BlockState:{Name:"minecraft:activator_rail"},Time:1},${CMDs}]}`
+    return `summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:activator_rail"},Time:1,Passengers:[${CMDs}]}`
 }
+
 function generate() {
     let modules = document.getElementsByClassName('command-block');
     let commands = document.getElementsByClassName('command-input');
     let CMDs = '';
+
     for (let i = 0; i < commands.length; i++) {
-        CMDs += generateModule(commands[i].value.trim(),modules[i].querySelector('.repeating-checkbox').checked) + ",";
+        CMDs += generateModule(commands[i].value.trim(), modules[i].querySelector('.repeating-checkbox').checked) + ",";
     }
+
     CMDs = CMDs.slice(0, -1);
     let cmd = generateBase(CMDs);
+
     const savedCommandsTextarea = document.getElementById('SavedCommands');
     savedCommandsTextarea.value = cmd;
     localStorage.setItem('savedCommands', cmd);
-    repeatingY = 3; //reset back to original value
+
+    repeatingY = 3; // Reset back to the original value
     return cmd;
 }
-
 
 
 
